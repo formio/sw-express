@@ -1,0 +1,28 @@
+{
+  "name": "express-sw",
+  "version": "1.0.0",
+  "description": "A subset of express that uses service workers in the browser to run.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Express.js",
+    "Service Workers",
+    "sw",
+    "express",
+    "serviceworker",
+    "webworker",
+    "web worker"
+  ],
+  "author": "Randall Knutson <randall@knutson.io>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "is-ip": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^10.9.4",
+    "typescript": "^3.0.3"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "lib": ["es2015", "webworker"],
+    "noImplicitAny": true,
+    "preserveConstEnums": true,
+    "outDir": "./lib",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false
+  },
+  "include": ["src/*.ts", "src/**/*.ts"],
+  "exclude": [
+    "node_modules"
+  ]
+}
