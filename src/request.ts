@@ -1,15 +1,14 @@
 import accepts from 'accepts';
 import isIP from 'is-ip';
-import parseRange from 'range-parser';
-import parse from 'parseurl';
+const parseRange = require('range-parser');
 
 export default class NodeRequest {
   public app: any;
   public request: Request;
   public res: any;
+  public query: object;
   params: any;
   body: any;
-  query: any;
 
   constructor(app, request) {
     this.app = app;
@@ -52,7 +51,7 @@ export default class NodeRequest {
   }
 
   get url() {
-    return this.request.url.substr(this.app.host.length - 1);
+    return this.request.url;
   }
 
   on(event, func) {
@@ -246,7 +245,8 @@ export default class NodeRequest {
   }
 
   get path() {
-    return parse(this).pathname;
+    const url = new URL(this.request.url);
+    return url.pathname;
   }
 
   get hostname() {

@@ -17,7 +17,6 @@ export default function(options = {}) {
     app.host = host;
 
     self.addEventListener('fetch', (event: any) => {
-      console.log('request', event.request.url);
       // If the request is not to our host, respond as normal.
       if (!event.request.url.startsWith(host)) {
         event.respondWith(fetch(event.request).then(response => {
@@ -26,16 +25,23 @@ export default function(options = {}) {
         return;
       }
 
-      console.log('handling', event.request.url);
       event.respondWith(new Promise((resolve) => {
         const req = new NodeRequest(app, event.request);
-
         const res = new NodeResponse(app, resolve);
+
         req.res = res;
         res.req = req;
 
+        // Handle query separately.
+        const url = new URL(event.request.url);
+        const searchParams: any = new URLSearchParams(url.search);
+        req.query = {};
+        for (const [key, value] of searchParams.entries()) {
+          req.query[key] = value;
+        }
+
         app.handle(req, res, () => {
-          console.log('App finished with no handlers');
+          console.log(event.request.url, 'Request finished with no handlers');
         });
       }));
     });

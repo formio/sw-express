@@ -4,6 +4,8 @@
   "description": "A subset of express that uses service workers in the browser to run.",
   "main": "lib/index.js",
   "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
