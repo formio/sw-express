@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
+    "prepublish": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -18,7 +19,7 @@
     "web worker"
   ],
   "author": "Randall Knutson <randall@knutson.io>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.16.3",
     "is-ip": "^2.0.0"
