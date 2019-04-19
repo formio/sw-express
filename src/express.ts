@@ -45,6 +45,9 @@ export default function(options = {}) {
         });
       }));
     });
+
+    // @ts-ignore
+    self.addEventListener('activate', () => self.clients.claim());
   };
 
   return app;

@@ -1,5 +1,5 @@
 {
-  "name": "express-sw",
+  "name": "sw-express",
   "version": "1.0.0",
   "description": "A subset of express that uses service workers in the browser to run.",
   "main": "lib/index.js",
