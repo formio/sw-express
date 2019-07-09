@@ -9,10 +9,12 @@ export default class NodeRequest {
   public query: object;
   params: any;
   body: any;
+  private _url: URL;
 
   constructor(app, request) {
     this.app = app;
     this.request = request.clone();
+    this._url = new URL(this.request.url);
   }
 
   destroy(error) {
@@ -51,7 +53,19 @@ export default class NodeRequest {
   }
 
   get url() {
-    return this.request.url;
+    return `${this._url.pathname}${this._url.search}`;
+  }
+
+  set url(value) {
+    this._url = new URL(`${this._url.origin}${value}`);
+  }
+
+  get path() {
+    return this._url.pathname;
+  }
+
+  set path(value) {
+    this._url = new URL(`${this._url.origin}${value}${this._url.search}`);
   }
 
   on(event, func) {
@@ -242,11 +256,6 @@ export default class NodeRequest {
       : [hostname];
 
     return subdomains.slice(offset);
-  }
-
-  get path() {
-    const url = new URL(this.request.url);
-    return url.pathname;
   }
 
   get hostname() {
